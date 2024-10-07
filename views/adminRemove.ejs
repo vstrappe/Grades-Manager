@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin GFA</title>
+</head>
+<body>
+    <h1>Removing All Applicants</h1>
+    <form action="/processAdminRemove" method="post" id="form">
+        <input type="button" value="Remove all applicants" onclick="message()">
+    </form>
+    <hr>
+    <%- homeURL %>
+    <script>
+        function message() {
+            let f = document.querySelector("#form");
+            if (confirm("Are you sure you want to remove all applications?")) {
+                f.submit();
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<title>Summer Camp</title>
+</head>
+
+<body>
+	<h1>Demo Showing displaying data from the server</h1>
+	<h2>Displaying data using templates</h2>
+	<ul>
+		<li><%- firstName %></li>
+    <li><%- lastName %></li>
+
+	</ul>
+	<hr>
+    <%- homeUrl %>
+	<br>
+	<br>
+	<h2>Displaying data using javascript</h2>	
+	<div class="applicants"></div>
+    <script>
+      const url =
+        'http://localhost:4000/data';
+			const applicantData = document.querySelector(".applicants");
+      const applicants = [];
+      
+	  fetch(url)
+        .then(resp => resp.json())
+        .then(data => applicants.push(data))
+				.then(data => {
+					console.log(applicants)
+					const node = document.createTextNode(`${applicants[0].firstName} ${applicants[0].lastName}`);
+					applicantData.appendChild(node);
+				});
+    </script>
+</body>
+
+
+</html>
